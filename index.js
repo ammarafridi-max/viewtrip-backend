@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const path = require('path');
 const reservationRoutes = require('./routes/reservation.routes');
 const flightRoutes = require('./routes/flight.routes');
 const airportRoutes = require('./routes/airport.routes');
 const globalErrorHandler = require('./controllers/error.controller');
 const AppError = require('./utils/appError');
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -15,6 +17,15 @@ process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection failed:', err.message);
+  });
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -80,5 +91,7 @@ app.all('/*\w', (req, res, next) => {
 });
 
 app.use(globalErrorHandler);
+
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
 module.exports = app;
