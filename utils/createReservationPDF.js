@@ -51,7 +51,7 @@ async function createReservationPDF(ticket) {
   fs.writeFileSync(filePath, pdfBuffer);
 
   // Send Reservation PDF to Customer
-  const body = `Hi ${ticket.passengers[0].firstName}, \n\nThank you for booking your flight reservation with Dummy Ticket 365. \n\nPlease find attached your flight reservation to this email. \n\nYou can verify your reservation on https://www.viewtrip.info/${ticket.pnr}, which is a global reservation system. \n\nIf you have any queries, or need a hotel reservation or travel insurance, please reply back to this email. We'll be happy to assist you. \n\nThanks\nDummy Ticket 365`;
+  const body = `Hi ${ticket.passengers[0].firstName}, \n\nThank you for booking your flight reservation with ViewTrip. \n\nPlease find attached your flight reservation to this email. \n\nYou can verify your reservation on https://www.viewtrip.info/${ticket.pnr}/${ticket.passengers[0].lastName.toLowerCase()}. \n\nThanks\nViewTrip`;
 
   await transporter.sendMail({
     from: `"ViewTrip" <${senderEmail}>`,

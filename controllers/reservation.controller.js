@@ -18,6 +18,7 @@ exports.getReservation = catchAsync(async (req, res, next) => {
   }
 
   const leadPassenger = ticket.passengers[0];
+
   if (
     !leadPassenger ||
     leadPassenger.lastName.toLowerCase() !== lastName.toLowerCase()
@@ -42,8 +43,8 @@ exports.getReservation = catchAsync(async (req, res, next) => {
   if (now > expirationDate) {
     return next(
       new AppError(
-        `This reservation has expired. It was valid for ${daysValid} days.`,
-        410 // 410 Gone
+        `This reservation has expired. Please contact your agent.`,
+        410
       )
     );
   }
