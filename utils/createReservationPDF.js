@@ -22,7 +22,7 @@ async function createReservationPDF(ticket) {
   // Generate QR Code
   await QRCode.toFile(
     `public/qr-codes/${ticket.pnr}-qr.png`,
-    `https://www.viewtrip.info/${ticket.pnr}`,
+    `https://www.viewtrip.info/${ticket.pnr}/${ticket.passengers[0].lastName}`,
     { width: 100 }
   );
 

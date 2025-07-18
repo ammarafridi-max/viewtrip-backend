@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}`, quiet: true });
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -30,9 +30,11 @@ mongoose
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      process.env.MDT_URL,
-      process.env.DT365_URL,
-      process.env.VIEWTRIP_URL,
+      process.env.MDT_FRONTEND,
+      process.env.MDT_BACKEND,
+      process.env.DT365_FRONTEND,
+      process.env.DT365_BACKEND,
+      process.env.VIEWTRIP_FRONTEND,
     ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -92,6 +94,8 @@ app.all('/*\w', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT} (${process.env.NODE_ENV})`)
+);
 
 module.exports = app;

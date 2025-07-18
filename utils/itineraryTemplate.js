@@ -290,7 +290,7 @@ function itineraryTemplate(form) {
       <body>
 
         <div class='viewtrip-logo'>
-          <img src='${process.env.BACKEND_URL}/uploads/view-trip-logo-dark.png' />
+          <img src='${process.env.VIEWTRIP_BACKEND}/uploads/view-trip-logo-dark.png' />
           <span>Global Reservation System</span>
         </div>
 
@@ -308,8 +308,8 @@ function itineraryTemplate(form) {
               <div class='header-value'>${pnr}</div>
             </div>
             <div class="header-col-2">
-              <img src="${process.env.BACKEND_URL}/qr-codes/${pnr}-qr.png" alt="QR-Code" class="qr-code" />
-              <span>viewtrip.info/${pnr}</span>
+              <img src="${process.env.VIEWTRIP_BACKEND}/qr-codes/${pnr}-qr.png" alt="QR-Code" class="qr-code" />
+              <span>viewtrip.info/${pnr}/${passengers[0].lastName}</span>
             </div>
           </div>
 
