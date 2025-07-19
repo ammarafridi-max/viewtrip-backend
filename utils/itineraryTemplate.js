@@ -397,7 +397,7 @@ function itineraryTemplate(form) {
               <div class="segment-body">
                 <div class="flight-main">
                   <div class="airline">
-                    <img src="${seg.airline.logo}" class="airline-logo" alt="${seg.airline.name}" />
+                    <img src="'${process.env.VIEWTRIP_BACKEND}${seg.airline.logo}" class="airline-logo" alt="${seg.airline.name}" />
                     <div>
                       <p class="airline-name">${seg.airline.name}</p>
                       <p class="flight">
