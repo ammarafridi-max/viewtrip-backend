@@ -18,8 +18,6 @@ exports.sendEmailWithReservation = async (
   pdfBuffer,
   filename
 ) => {
-  console.log('Email about to be sent...');
-
   const mailOptions = {
     from: `"ViewTrip" <${process.env.SENDER_EMAIL}>`,
     to,
@@ -32,8 +30,6 @@ exports.sendEmailWithReservation = async (
       },
     ],
   };
-
-  console.log('Email about to be sent 2...');
 
   await transporter.sendMail(mailOptions);
 };

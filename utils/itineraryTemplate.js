@@ -309,7 +309,7 @@ function itineraryTemplate(form) {
             </div>
             <div class="header-col-2">
               <img src="${process.env.VIEWTRIP_BACKEND}/qr-codes/${pnr}-qr.png" alt="QR-Code" class="qr-code" />
-              <span>viewtrip.info/${pnr}/${passengers[0].lastName}</span>
+              <span>viewtrip.info?pnr=${pnr}</span>
             </div>
           </div>
 
@@ -326,7 +326,7 @@ function itineraryTemplate(form) {
                 <div class="segment-body">
                   <div class="flight-main">
                     <div class="airline">
-                      <img src="${seg.airline.logo}" class="airline-logo" alt="${seg.airline.name}" />
+                      <img src="${process.env.VIEWTRIP_BACKEND}${seg.airline.logo}" class="airline-logo" alt="${seg.airline.name}" />
                       <div>
                         <p class="airline-name">${seg.airline.name}</p>
                         <p class="flight">
